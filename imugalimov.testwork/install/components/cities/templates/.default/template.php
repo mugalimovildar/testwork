@@ -18,9 +18,9 @@
 			<td><?= $curCity['income']; ?></td>
 			<td><?= $curCity['expenses']; ?></td>
 			<td><?= $curCity['population']; ?></td>
-			<td><?= $curCity['population_rating_place']; ?></td>
-			<td><?= $curCity['avg_income_rating_place']; ?></td>
-			<td><?= $curCity['avg_expenses_rating_place']; ?></td>
+			<td><?= $curCity['poprat']; ?></td>
+			<td><?= $curCity['inrat']; ?></td>
+			<td><?= $curCity['exrat']; ?></td>
 		</tr>
 		<?php endforeach; ?>
 
