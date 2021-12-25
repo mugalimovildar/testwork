@@ -130,9 +130,19 @@ class imugalimov_testwork extends CModule
 
     public function InstallFiles()
     {
+
+        $localPath = str_replace(Application::getDocumentRoot(),'',__DIR__);
+        $localPathExploded = explode(DIRECTORY_SEPARATOR,$localPath);
+
+        if ($localPathExploded[1] == 'local') {
+            $compoPath = Application::getDocumentRoot().'/local/components/'.$this->MODULE_ID.'/';
+        } else {
+            $compoPath = Application::getDocumentRoot().'/bitrix/components/'.$this->MODULE_ID.'/';
+        }
+
         CopyDirFiles(
             __DIR__.'/components',
-            Application::getDocumentRoot().'/local/components/'.$this->MODULE_ID.'/',
+            $compoPath,
             true,
             true
         );
@@ -140,9 +150,18 @@ class imugalimov_testwork extends CModule
 
     public function UninstallFiles ()
     {
-        Directory::deleteDirectory(
-            Application::getDocumentRoot().'/local/components/'.$this->MODULE_ID
-        );
+
+        $localPath = str_replace(Application::getDocumentRoot(),'',__DIR__);
+        $localPathExploded = explode(DIRECTORY_SEPARATOR,$localPath);
+
+        if ($localPathExploded[1] == 'local') {
+            $compoPath = Application::getDocumentRoot().'/local/components/'.$this->MODULE_ID;
+        } else {
+            $compoPath = Application::getDocumentRoot().'/bitrix/components/'.$this->MODULE_ID;
+        }
+
+        Directory::deleteDirectory($compoPath);
+        
     }
 
 }
